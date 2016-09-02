@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
+gem 'sinatra-sequel'
 gem 'sinatra-contrib'
-gem 'rom'
-gem 'rom-repository'
-gem 'rom-sql'
 gem 'sqlite3'
+gem 'trailblazer', '1.1.0' # operation
+gem 'dry-validation'
+gem 'oj'
+gem 'rerun'
+
+gem 'pry'
