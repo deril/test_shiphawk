@@ -5,7 +5,7 @@ class Coin::Change < Trailblazer::Operation
   attr_reader :result
 
   def process(params)
-    value = validate(params.fetch('amount', nil))
+    value = validate(params.fetch(:amount, 0).to_i)
 
     @result = if wrong_value(value)
       value
@@ -35,16 +35,12 @@ class Coin::Change < Trailblazer::Operation
     if value > 0
       get_change(value, coins, res)
     else
-      hash_result = Hash.new(0)
-      res.each { |d| hash_result[d] += 1 }
-      hash_result
+      res.inject(Hash.new(0)) { |hash, el| hash[el] += 1; hash }
     end
   end
 
   def validate(value)
-    return {error: 'Wrong amount of money'} unless value
-
-    return {error: 'No money in the machine'} unless available_coins
+    return {error: 'Wrong amount of money'} unless value > 0
 
     all_money = available_coins.inject(0) { |res, coins| res + (coins[0] * coins[1]) }
     return {error: 'Not enough money in the machine'} if value > all_money

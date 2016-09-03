@@ -6,7 +6,7 @@ configure :development do
 end
 
 configure :test do
-  set :database, 'sqlite3::memory:'
+  set :database, 'sqlite::memory:'
 end
 
 require_relative 'migrations'

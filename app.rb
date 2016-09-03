@@ -3,8 +3,6 @@ require 'sinatra/contrib'
 require 'oj'
 require_relative 'config/init'
 
-require 'pry'
-
 before do
   request.body.rewind
   @request_payload = Oj.load(request.body.read)
@@ -15,7 +13,7 @@ post '/machine' do
     Coin::Create.run(denomination: denomination, amount: amount).first
   end
 
-  json results.all?
+  json status: results.all?
 end
 
 put '/machine' do
@@ -23,7 +21,7 @@ put '/machine' do
     Coin::Update.run(denomination: denomination, amount: amount).first
   end
 
-  json results.all?
+  json status: results.all?
 end
 
 get '/machine' do

@@ -8,5 +8,6 @@ gem 'trailblazer', '1.1.0' # operation
 gem 'dry-validation'
 gem 'oj'
 gem 'rerun'
-
-gem 'pry'
+gem 'rspec'
+gem 'rspec-json_expectations'
+gem 'database_cleaner'
