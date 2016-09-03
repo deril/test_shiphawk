@@ -136,23 +136,3 @@ describe 'My Sinatra Application' do
     end
   end
 end
-
-
-
-# require File.dirname(__FILE__) + '/spec_helper'
-#
-# describe 'App' do
-#   include Rack::Test::Methods
-#
-#   def app
-#     @app ||= Sinatra::Application
-#   end
-#
-#   describe 'get /machine' do
-#     it 'returns current state' do
-#       get '/'
-#       expect(last_response).to be_ok
-#       expect(last_response.body).to match '{}'
-#     end
-#   end
-# end
